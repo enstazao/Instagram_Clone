@@ -1,0 +1,23 @@
+const express = require('express');
+const router = express.Router();
+const db = require('../connect');
+
+async function getBio(username) {
+  const result = (await db).query(
+    'SELECT bio FROM USER_BIO WHERE username = ?',
+    [username]
+  );
+  return result;
+}
+
+router.post('/', async function (req, res) {
+  const username = req.body.username;
+  const r = await getBio(username);
+  if (r[0].length === 0) {
+    res.json({ message: 'Bio Not Found' });
+  } else {
+    res.json(r);
+  }
+});
+
+module.exports = router;

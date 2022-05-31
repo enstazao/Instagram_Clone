@@ -1,70 +1,172 @@
-# Getting Started with Create React App
+# Instagram CLone Using React, NodeJS & MySQL
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Step To Run Instagram On Ubuntu Machine
 
-## Available Scripts
+1. # First Setup The DataBase On Your Ubuntu Machine
 
-In the project directory, you can run:
+I am assuming that mysql is already installed in your system. If that is installed on your system the next thing you have to do is that open the terminal and go to mysql Prompt.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Mysql Opening](/guide_images/mysql.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+The Next Thing you have to do is to set up the DataBase. Just Download the file __instagram_db.sql__ from the repository and then import that file.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Copy the Parent Folder Path By just right click on the file and then click on __properties__ .
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
+![FilePath](/guide_images/mysql-setup.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+After all this now import that file in mysql By using the following command.
 
-### `npm run eject`
+```bash
+    source /home/enstazao/Documents/DataBase_Project/instagram_db.sql
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The output will be shown like this.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
+![Output](/guide_images/output.png)
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+After Importing File For Confirmation Try This Command.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ ```bash
+    SHOW TABLES;
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+The following table will be shown to you after writing this command.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
+![Output2](/guide_images/output-confirm.png)
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+Now First Step is covered you have successfully setted up the database. Now you have to setup react and nodejs in your system which is highly easy step. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Now First Install nodejs in your __UBUNTU MACHINE__.
 
-### Advanced Configuration
+Open Up the terminal and then type the following command in your shell.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+sudo apt install nodejs
+```
 
-### Deployment
+After Running this command Following output will be shown to you.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
+![NodeJS_Installation](/guide_images//nodejs_installation.png)
+---
 
-### `npm run build` fails to minify
+After Installing this command in order to confirm is the nodejs is successfully installed in your system or not Run This command in your Terminal.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+    node --version
+```
+
+The Output Will be Like This:
+
+---
+![NodeJs_Installation_Confirmation](/guide_images//node-install-confirm.png)
+---
+
+After Installing __NodeJS__ The Next thing that you have to install is the __NPM(Node Package Manager)__. With the help of npm you can install different packages.
+
+TO Install __NPM__ open up the terminal and issue this command.
+
+```bash
+    sudo apt install npm
+```
+
+After Installation is done write this command to see the __NPM__ version.
+
+```bash
+    npm --version
+```
+
+The Output of the command will be like this.
+
+---
+![NPM_Installtion_Confirmation](/guide_images/npm-confirm.png)
+
+---
+
+Now NodeJs Installtion is done successfully in your system. Now you have to install npx. By the way it comes with npm but if that does not come with npm then issue this command to install npx. The npx is used to create the react app. npx should come with npm 5.2+. 
+
+
+```bash
+sudo npm i -g npx
+```
+
+# Packages Installation
+Once that done Now you are good to go. All the Installation is Done. Now let's run the app.
+
+
+Now Once all the installation is done, now you have to run these two commands. First move to the directory which you have cloned. There will be two folder one is __client__ and the other one is __server__ so client is our frontend and server is our backend. 
+
+Move to the app directory that you have cloned.
+
+```bash
+    cd client
+    npm install
+
+    cd ..
+
+    cd server
+    npm install
+```
+
+This will take up some time depending on your internet speed. What you are doing is that you are installing all the packages that I have used in my react and nodejs app. Now all is done you just have to run the app.
+
+One Last Thing you have to do is that you have to set the database password. Like in mycase I am using database as a root user and the password for it is " __newpassword__ "  So In database connection you have to give same password that your root user have if there is no password for root user left that field empty.
+
+Open Up the bash and open the file in which I am making connection with the database. And open the "__.env__" file in any editor. I am using the vim editor to show show how to setup connection with database.
+```bash
+    cd server/
+    vi .env
+```
+
+---
+![Db_Credentials](/guide_images/db_credentials.png)
+
+---
+
+Now here set the __DB_PASSWORD__ to the password you have. The Data base name is __INSTAGRAM__ and the user is __root__ so if you have created your own user then you can change the username Also.
+
+
+# Running APP
+
+Now It's time to run the app. Open Two Terminals in the directory you clone. In First Terminal Issue these command.
+
+```bash
+    cd client
+    npm start
+```
+
+Here Our FrontEnd is started running on port __3000__. 
+
+__DONOT CLOSE THIS TERMINAL__
+
+Now You have to run the backend. So as you opened two terminals go to second terminal and issue these commands to start the backend NODEJS.
+
+```bash
+    cd server
+    npm start
+```
+
+---
+![Running_App](/guide_images/running_app.png)
+---
+
+Now go the __localhost:3001__ Your app is running Now. Hope You got not any problem running the app. If any issue arises Please let me know. 
+
+Thanks!

@@ -1,0 +1,128 @@
+-- CREATING A DATABASE
+CREATE DATABASE INSTAGRAM;
+
+use INSTAGRAM;
+-- Creating a Table for USER
+CREATE TABLE USER(
+    username VARCHAR(100) NOT NULL,
+    fullname VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    PRIMARY KEY (username)
+);
+ 
+-- TABLE FOR USER WEBSITE
+CREATE TABLE USER_WEBSITE(
+    username VARCHAR(100) NOT NULL,
+    website VARCHAR(100) NOT NULL,
+    PRIMARY KEY (username, website),
+    FOREIGN KEY (username) REFERENCES USER(username) ON UPDATE CASCADE
+);
+
+-- CREATE TABLE FOR USER BIO
+CREATE TABLE USER_BIO(
+    username VARCHAR(100) NOT NULL,
+    bio VARCHAR(255) NOT NULL,
+    PRIMARY KEY (username),
+    FOREIGN KEY (username) REFERENCES USER(username) ON UPDATE CASCADE
+);
+
+
+-- TABLE FOR USER PHONE
+CREATE TABLE USER_PHONE(
+    username VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(100) NOT NULL,
+    PRIMARY KEY (username),
+    FOREIGN KEY (username) REFERENCES USER(username) ON UPDATE CASCADE
+);
+
+-- USER GENDER TABLE
+CREATE TABLE USER_GENDER(
+    username VARCHAR(100) NOT NULL,
+    gender VARCHAR(100) NOT NULL,
+    PRIMARY KEY(username),
+    FOREIGN KEY (username) REFERENCES USER(username) ON UPDATE CASCADE
+);
+
+-- CREATING A TABLE FOR FOLLOWERS
+CREATE TABLE FOLLOWERS(
+    follower_username VARCHAR(100) NOT NULL,
+    username VARCHAR(100) NOT NULL,
+    PRIMARY KEY(follower_username, username),
+    FOREIGN KEY (username) REFERENCES USER(username) ON UPDATE CASCADE
+);
+
+-- CREATING A FOLLOWINGS TABLE
+CREATE TABLE FOLLOWING(
+    following_username VARCHAR(100) NOT NULL,
+    username VARCHAR(100) NOT NULL,
+    PRIMARY KEY (following_username, username),
+    FOREIGN KEY (username) REFERENCES USER(username) ON UPDATE CASCADE
+);
+
+-- CREATING A POSTS TABLE
+CREATE TABLE POSTS(
+    img_path VARCHAR(255) NOT NULL,
+    likes INT NOT NULL,
+    username VARCHAR(100) NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    caption VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(img_path),
+    FOREIGN KEY (username) REFERENCES USER(username) ON UPDATE CASCADE
+);
+
+
+CREATE TABLE LIKES( 	
+    liked_by VARCHAR(255) NOT NULL,
+    img_path VARCHAR(255) NOT NULL,
+    PRIMARY KEY(liked_by, img_path),
+    FOREIGN KEY (liked_by) REFERENCES USER(username) ON UPDATE CASCADE
+);
+-- CREATING A TABLE POSTS_CAPTION
+-- CREATE TABLE POSTS_CAPTION(
+--     post_id INT NOT NULL AUTO_INCREMENT,
+--     caption VARCHAR(255) NOT NULL,
+--     PRIMARY KEY(post_id, caption),
+--     FOREIGN KEY (post_id) REFERENCES POSTS(post_id)
+-- );
+
+-- CREATING A TABLE FOR IMAGES
+-- CREATE TABLE IMAGES(
+--     img_id INT NOT NULL AUTO_INCREMENT,
+--     -- img_name VARCHAR(255) NOT NULL,
+--     post_id INT NOT NULL,
+--     PRIMARY KEY (img_id),
+--     FOREIGN KEY (post_id) REFERENCES POSTS(post_id)
+-- );
+
+-- CREATING A TABLE IMAGES _LOCATION
+-- CREATE TABLE IMAGES_LOCATION(
+--     img_id INT NOT NULL AUTO_INCREMENT,
+--     location VARCHAR(255) NOT NULL,
+--     PRIMARY KEY (img_id, location),
+--     FOREIGN KEY (img_id) REFERENCES IMAGES(img_id)
+-- );
+
+-- CREATING TABLE FOR COMMENTS
+CREATE TABLE COMMENTS(
+    comment_id INT NOT NULL AUTO_INCREMENT, 
+    commented_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    commented_by VARCHAR(100) NOT NULL,
+    img_path VARCHAR(255) NOT NULL,
+    body TEXT NOT NULL,
+    PRIMARY KEY (comment_id),
+    FOREIGN KEY (img_path) REFERENCES POSTS(img_path) ON DELETE CASCADE
+);
+
+-- TABLE FOR MESSAGES
+CREATE TABLE MESSAGES(
+    msg_id INT NOT NULL AUTO_INCREMENT,
+    messaged_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    message_body TEXT NOT NULL,
+    sender_username VARCHAR(100) NOT NULL,
+    reciever_username VARCHAR(100) NOT NULL,
+    PRIMARY KEY (msg_id),
+    FOREIGN KEY (sender_username) REFERENCES USER(username) ON UPDATE CASCADE
+);
+                         
