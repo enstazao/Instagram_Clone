@@ -79,30 +79,6 @@ CREATE TABLE LIKES(
     PRIMARY KEY(liked_by, img_path),
     FOREIGN KEY (liked_by) REFERENCES USER(username) ON UPDATE CASCADE
 );
--- CREATING A TABLE POSTS_CAPTION
--- CREATE TABLE POSTS_CAPTION(
---     post_id INT NOT NULL AUTO_INCREMENT,
---     caption VARCHAR(255) NOT NULL,
---     PRIMARY KEY(post_id, caption),
---     FOREIGN KEY (post_id) REFERENCES POSTS(post_id)
--- );
-
--- CREATING A TABLE FOR IMAGES
--- CREATE TABLE IMAGES(
---     img_id INT NOT NULL AUTO_INCREMENT,
---     -- img_name VARCHAR(255) NOT NULL,
---     post_id INT NOT NULL,
---     PRIMARY KEY (img_id),
---     FOREIGN KEY (post_id) REFERENCES POSTS(post_id)
--- );
-
--- CREATING A TABLE IMAGES _LOCATION
--- CREATE TABLE IMAGES_LOCATION(
---     img_id INT NOT NULL AUTO_INCREMENT,
---     location VARCHAR(255) NOT NULL,
---     PRIMARY KEY (img_id, location),
---     FOREIGN KEY (img_id) REFERENCES IMAGES(img_id)
--- );
 
 -- CREATING TABLE FOR COMMENTS
 CREATE TABLE COMMENTS(

@@ -107,6 +107,34 @@ Now NodeJs Installtion is done successfully in your system. Now you have to inst
 sudo npm i -g npx
 ```
 
+# Updating To Latest Version of NodeJS
+
+I tried to run the app on another machine I have faced this issue so you have to install the node specific version that I used to make this app that is node version 18.
+
+ So let's update to node 18 version. To Update it is simple easy simple execute following commands.
+
+```bash
+sudo apt update
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+source ~/.bashrc
+nvm --version
+nvm ls-remote
+nvm install v18.0.0
+```
+
+So Now You are good to Go All the Installaion are done successfully. Check the node version.
+
+```
+ node --version
+```
+
+It must be __v18.0.0__. 
+
+---
+![Node_Version_18](/guide_images/node18.png)
+---
+
+
 # Packages Installation
 Once that done Now you are good to go. All the Installation is Done. Now let's run the app.
 
@@ -170,3 +198,43 @@ Now You have to run the backend. So as you opened two terminals go to second ter
 Now go the __localhost:3001__ Your app is running Now. Hope You got not any problem running the app. If any issue arises Please let me know. 
 
 Thanks!
+
+
+Some of the screen shots.
+
+---
+![Login](/guide_images/img_1.png)
+---
+
+---
+![Signup](/guide_images/img_2.png)
+---
+
+
+---
+![Home](/guide_images/img_3.png)
+---
+
+---
+![CreatePost](/guide_images/img_4.png)
+---
+
+
+---
+![Follow](/guide_images//img_5.png)
+---
+
+
+---
+![Profile](/guide_images//img_6.png)
+---
+
+
+---
+![Message](/guide_images//img_8.png)
+---
+
+---
+![Chat](/guide_images/img_9.png)
+---
+
